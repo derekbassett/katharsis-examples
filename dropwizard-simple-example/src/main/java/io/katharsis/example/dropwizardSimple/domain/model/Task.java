@@ -1,24 +1,19 @@
 package io.katharsis.example.dropwizardSimple.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.katharsis.resource.annotations.JsonApiId;
 import io.katharsis.resource.annotations.JsonApiResource;
-import io.katharsis.resource.annotations.JsonApiToMany;
+import io.katharsis.resource.annotations.JsonApiToOne;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@JsonApiResource(type = "projects")
-public class Project {
+@JsonApiResource(type = "tasks")
+public class Task {
 
     @JsonApiId
     private Long id;
 
-    @JsonProperty
     private String name;
 
-    @JsonApiToMany
-    private List<Task> tasks = new ArrayList<>();
+    @JsonApiToOne
+    private Project project;
 
     public Long getId() {
         return id;
@@ -36,11 +31,11 @@ public class Project {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    public Project getProject() {
+        return project;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
